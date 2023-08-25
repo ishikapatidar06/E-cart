@@ -1,0 +1,19 @@
+{
+  "folders": [
+	{
+		"path": "../../HideShow"
+	},
+	{
+		"path": "../../../Box"
+	},
+	{
+		"path": "../../Balls"
+	},
+	{
+		"path": "."
+	}
+],
+  "settings": {
+    "liveServer.settings.multiRootWorkspaceName": "Balls"
+  }
+}

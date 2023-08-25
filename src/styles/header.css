@@ -1,0 +1,40 @@
+
+nav {
+  background-color: rgb(19, 109, 115);
+  display: flex;
+  justify-content: space-between;
+  padding: 1%;
+}
+
+nav > h2 {
+  text-transform: uppercase;
+  color: rgb(243, 217, 217);
+}
+
+nav > div {
+  display: flex;
+  align-items: center;
+}
+
+nav > div > a {
+  color: rgb(243, 217, 217);
+  font-size: 1.2rem;
+  margin: 0 1rem;
+  transition: all 0.3s;
+}
+
+nav > div > a:hover {
+  opacity: 0.5;
+}
+
+nav > div > a > p {
+  position: absolute;
+  background-color:  #101010;;
+  border-radius: 50%;
+  width: 20px;
+  height: 25px;
+  font: 900 0.7rem "Roboto";
+  display: grid;
+  place-items: center;
+  transform: translate(80%, -80%);
+}

@@ -1,0 +1,102 @@
+
+.cart {
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 4fr 1fr;
+}
+
+.cart > main {
+  padding: 2rem;
+  overflow-y: auto;
+}
+
+.cart > main::-webkit-scrollbar {
+  display: none;
+}
+
+.cart > main > h1 {
+  color: rgb(19, 109, 115);
+  font: 100 2rem "Roboto";
+  font-weight: 400;
+}
+
+.cart > aside {
+  border-radius: 50px 0 0 50px;
+  background-color: rgb(19, 109, 115);
+  color: #f7f0f0;
+  height: 40%;
+  width: 100%;
+  box-shadow: -10px 0px 10px rgba(0, 0, 0, 0.182);
+  display: flex;
+  margin-top: 150px;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.cart > aside > h2 {
+  margin: 1rem;
+  font: 100 1.8rem "Roboto";
+  letter-spacing: 2px;
+  font-weight: 300;
+}
+
+.cart > aside > h2:last-of-type {
+  font-weight: 600;
+}
+
+.cartItem {
+  background-color: #f7f0f0;
+  width: 70%;
+  height: 20%;
+  border-radius: 10px;
+  margin: 2rem 0;
+  padding: 1rem;
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr 1fr;
+  align-items: center;
+  margin-left: 8%;
+}
+
+.cartItem img {
+  width: 90%;
+  height: 100px;
+  object-fit: contain;
+}
+
+.cartItem > div {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.cartItem > div button {
+  width: 30px;
+  height: 30px;
+  border: none;
+  background-color: rgb(19, 109, 115);
+  color: #f7f0f0;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.cartItem > div button:hover {
+  background-color: rgb(18, 18, 18);
+}
+
+.cartItem > div p {
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+}
+
+.cartItem > svg {
+  cursor: pointer;
+  font-size: 1.5rem;
+  display: inline-block;
+  margin: auto;
+}
+
+.cartItem > svg:hover {
+  color: rgb(19, 109, 115);
+}
