@@ -46,34 +46,31 @@ const Home = () => {
     toast.success("Added To Cart");
   };
 
-  return React.createElement(
-    "div",
-    { className: "home" },
-    productList.map((i) =>
-      React.createElement(ProductCard, {
-        key: i.id,
-        imgSrc: i.imgSrc,
-        name: i.name,
-        price: i.price,
-        id: i.id,
-        handler: addToCartHandler,
-      })
-    )
+  return (
+    <div className="home">
+      {productList.map((item) => (
+        <ProductCard
+          key={item.id}
+          imgSrc={item.imgSrc}
+          name={item.name}
+          price={item.price}
+          id={item.id}
+          handler={addToCartHandler}
+        />
+      ))}
+    </div>
   );
 };
 
-const ProductCard = ({ name, id, price, handler, imgSrc }) =>
-  React.createElement(
-    "div",
-    { className: "productCard" },
-    React.createElement("img", { src: imgSrc, alt: name }),
-    React.createElement("p", null, name),
-    React.createElement("h4", null, `₹${price}`),
-    React.createElement(
-      "button",
-      { onClick: () => handler({ name, price, id, quantity: 1, imgSrc }) },
-      "Add to Cart"
-    )
-  );
+const ProductCard = ({ name, id, price, handler, imgSrc }) => (
+  <div className="productCard">
+    <img src={imgSrc} alt={name} />
+    <p>{name}</p>
+    <h4>₹{price}</h4>
+    <button onClick={() => handler({ name, price, id, quantity: 1, imgSrc })}>
+      Add to Cart
+    </button>
+  </div>
+);
 
 export default Home;

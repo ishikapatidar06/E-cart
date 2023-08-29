@@ -1,6 +1,9 @@
 import React from "react";
-import { AiFillDelete } from "react-icons/ai";
+
 import { useDispatch, useSelector } from "react-redux";
+import CartItem from "../components/CartItems";
+
+// Import your CartItem component here
 
 const Cart = () => {
   const { cartItems, subTotal, tax, shipping, total } = useSelector(
@@ -15,14 +18,15 @@ const Cart = () => {
     });
     dispatch({ type: "calculatePrice" });
   };
+
   const decrement = (id) => {
     dispatch({
       type: "decrement",
       payload: id,
     });
-
     dispatch({ type: "calculatePrice" });
   };
+
   const deleteHandler = (id) => {
     dispatch({
       type: "deleteFromCart",
@@ -31,70 +35,36 @@ const Cart = () => {
     dispatch({ type: "calculatePrice" });
   };
 
-  return React.createElement(
-    "div",
-    { className: "cart" },
-    React.createElement(
-      "main",
-      null,
-      cartItems.length > 0
-        ? cartItems.map((i) =>
-            React.createElement(CartItem, {
-              imgSrc: i.imgSrc,
-              name: i.name,
-              price: i.price,
-              qty: i.quantity,
-              id: i.id,
-              key: i.id,
-              decrement: decrement,
-              increment: increment,
-              deleteHandler: deleteHandler,
-            })
-          )
-        : React.createElement("h1", null, "No Items Yet !!")
-    ),
+  return (
+    <div className="cart">
+      <main>
+        {cartItems.length > 0 ? (
+          cartItems.map((item) => (
+            <CartItem
+              key={item.id}
+              imgSrc={item.imgSrc}
+              name={item.name}
+              price={item.price}
+              qty={item.quantity}
+              id={item.id}
+              decrement={decrement}
+              increment={increment}
+              deleteHandler={deleteHandler}
+            />
+          ))
+        ) : (
+          <h1>No Items Yet !!</h1>
+        )}
+      </main>
 
-    React.createElement(
-      "aside",
-      null,
-      React.createElement("h2", null, `Subtotal: ₹${subTotal}`),
-      React.createElement("h2", null, `Shipping: ₹${shipping}`),
-      React.createElement("h2", null, `Tax: ₹${tax}`),
-      React.createElement("h2", null, `Total: ₹${total}`)
-    )
+      <aside>
+        <h2>Subtotal: ₹{subTotal}</h2>
+        <h2>Shipping: ₹{shipping}</h2>
+        <h2>Tax: ₹{tax}</h2>
+        <h2>Total: ₹{total}</h2>
+      </aside>
+    </div>
   );
 };
-
-const CartItem = ({
-  imgSrc,
-  name,
-  price,
-  qty,
-  decrement,
-  increment,
-  deleteHandler,
-  id,
-}) =>
-  React.createElement(
-    "div",
-    { className: "cartItem" },
-    React.createElement("img", { src: imgSrc, alt: "Item" }),
-    React.createElement(
-      "article",
-      null,
-      React.createElement("h3", null, name),
-      React.createElement("p", null, `₹${price}`)
-    ),
-
-    React.createElement(
-      "div",
-      null,
-      React.createElement("button", { onClick: () => decrement(id) }, "-"),
-      React.createElement("p", null, qty),
-      React.createElement("button", { onClick: () => increment(id) }, "+")
-    ),
-
-    React.createElement(AiFillDelete, { onClick: () => deleteHandler(id) })
-  );
 
 export default Cart;

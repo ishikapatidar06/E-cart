@@ -6,22 +6,17 @@ import { useSelector } from "react-redux";
 const Header = () => {
   const { cartItems } = useSelector((state) => state.cart);
 
-  return React.createElement(
-    "nav",
-    null,
-    React.createElement("h2", null, "Shopping cart"),
-
-    React.createElement(
-      "div",
-      null,
-      React.createElement(Link, { to: "/" }, "Home"),
-      React.createElement(
-        Link,
-        { to: "/cart" },
-        React.createElement(FiShoppingBag, null),
-        React.createElement("p", null, cartItems.length)
-      )
-    )
+  return (
+    <nav>
+      <h2>Shopping cart</h2>
+      <div>
+        <Link to="/">Home</Link>
+        <Link to="/cart">
+          <FiShoppingBag />
+          <p>{cartItems.length}</p>
+        </Link>
+      </div>
+    </nav>
   );
 };
 
